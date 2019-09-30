@@ -9,7 +9,7 @@ services:
       - photoshow-log:/var/log
     ports:
       - "80:80"
-#      - "443:443"
+      - "443:443"
 
 volumes:
   photoshow-letsencrypt:

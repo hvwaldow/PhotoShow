@@ -33,9 +33,11 @@ ADD fpm.conf /etc/php/7.3/fpm/pool.d/photoshow.conf
 RUN sed -i -e 's/^\(\[supervisord\]\)$/\1\nnodaemon=true/' /etc/supervisor/supervisord.conf
 ADD supervisor.conf /etc/supervisor/conf.d/photoshow.conf
 
+ADD run_certbot.sh /root
+RUN chmod u+x /root/run_certbot.sh
 
 VOLUME ["/opt/PhotoShow", "/var/log", "/etc/letsencrypt"]
 EXPOSE 80
 EXPOSE 443
 
-CMD /usr/bin/supervisord
+CMD ["/usr/bin/supervisord"]
